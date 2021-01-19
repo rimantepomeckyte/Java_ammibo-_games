@@ -1,6 +1,7 @@
 package com.amiibo.amiiboGames;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private LayoutInflater inflater;
     List<Games> data;
+
+    public static final String ENTRY = "com.amiibo.amiiboGames.ENTRY";
 
     // create constructor to initialize context and data sent from SearchActivity
     public Adapter(Context context, List<Games> data) {
@@ -70,7 +73,12 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         // Click event for all items
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, "You clicked an item", Toast.LENGTH_SHORT).show();
+            Intent goToNewEntryActivity = new Intent(context, NewEntryActivity.class);
+            int itemPosition = getAdapterPosition();
+            Games games = data.get(itemPosition);
+
+            goToNewEntryActivity.putExtra(ENTRY,games);
+            context.startActivity(goToNewEntryActivity);
         }
     }
 }

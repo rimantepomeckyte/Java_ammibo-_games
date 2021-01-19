@@ -16,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //reikalinga atidaryti tuscia langa
         setContentView(R.layout.activity_login); //i tuscia langa ikrauna sukurta vaizda
+        setTitle("Login");
         //visas kodas rasomas po sito komentaro
         Button loginbatonas = findViewById(R.id.loginbatonas);//tokiu budu issitraukiam elementus
         //is vaizdo
@@ -24,19 +25,19 @@ public class LoginActivity extends AppCompatActivity {
 
         final CheckBox rememberme = (CheckBox) findViewById(R.id.rememberMe);
         //bus konstruojamas vartotojo objektas perduodant context'a (langa kuriame esame)
-        final User user=new User(LoginActivity.this);
+        final User user = new User(LoginActivity.this);
         //patikriname, ar paskutini karta buvo pazymetas checkbox remember me
         rememberme.setChecked(user.isRememberedForLogin());
 
         //Aprasoma prisiminti mane checkbox logika
-        if (rememberme.isChecked()){//jeigu checkbox buvo pazymetas-vartotojas pageidavo, kad informacija buvo issaugota
-            usernametext.setText(user.getUsernameForLogin(),TextView.BufferType.EDITABLE);//setText-uzpildysime user informacija, editable - suteiksim galimybe paredaguoti duomenis
-            passwordtext.setText(user.getPasswordForLogin(),TextView.BufferType.EDITABLE);
+        if (rememberme.isChecked()) {//jeigu checkbox buvo pazymetas-vartotojas pageidavo, kad informacija buvo issaugota
+            usernametext.setText(user.getUsernameForLogin(), TextView.BufferType.EDITABLE);//setText-uzpildysime user informacija, editable - suteiksim galimybe paredaguoti duomenis
+            passwordtext.setText(user.getPasswordForLogin(), TextView.BufferType.EDITABLE);
         } else {//jeigu checkbox buvo nepazymetas-vartotojas nenorejo, kad informacija buvo issaugota
-            usernametext.setText("",TextView.BufferType.EDITABLE);
+            usernametext.setText("", TextView.BufferType.EDITABLE);
             passwordtext.setText("", TextView.BufferType.EDITABLE);
         }
-Button registerBtn = findViewById(R.id.register_btn);
+        Button registerBtn = findViewById(R.id.register_btn);
 
         loginbatonas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,11 +47,10 @@ Button registerBtn = findViewById(R.id.register_btn);
                         "Prisijungimo Vardas:"+usernametext.getText().toString()+"\n"+
                         "Slaptazodis:"+passwordtext.getText().toString(),
                         Toast.LENGTH_SHORT).show(); */
-                if (Validation.isValidUsername(usernametext.getText().toString()) && Validation.isValidPassword(passwordtext.getText().toString()))
-                {
+                if (Validation.isValidUsername(usernametext.getText().toString()) && Validation.isValidPassword(passwordtext.getText().toString())) {
                     user.setUsernameForLogin(usernametext.getText().toString());
                     user.setPasswordForLogin(passwordtext.getText().toString());
-                    if (rememberme.isChecked()){
+                    if (rememberme.isChecked()) {
                         user.setRemembermeKeyForLogin(true);
                     } else {
                         user.setRemembermeKeyForLogin(false);
@@ -60,8 +60,7 @@ Button registerBtn = findViewById(R.id.register_btn);
                     Intent goToSearchActivity = new Intent(LoginActivity.this,//from
                             SearchActivity.class);//to
                     startActivity(goToSearchActivity);//cia pereina
-                }
-                else { //Kai duomenys neatinka reikalavimų
+                } else { //Kai duomenys neatinka reikalavimų
                     usernametext.setError(getResources().getString(R.string.login_invalid_username));
                     usernametext.requestFocus(); //Naudojamam laukely išmeta pranešimą
                 }
@@ -69,13 +68,13 @@ Button registerBtn = findViewById(R.id.register_btn);
             }
         });
 
-          registerBtn.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent gotoRegisterActivity = new Intent(LoginActivity.this, RegisterActivity.class);
-                  startActivity(gotoRegisterActivity);
-              }
-          });
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoRegisterActivity = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(gotoRegisterActivity);
+            }
+        });
     }
 
 }

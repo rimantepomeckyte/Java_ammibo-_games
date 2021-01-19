@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".NewEntryActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
 
         <meta-data
@@ -24,11 +25,11 @@
                 <action android:name="android.intent.action.SEARCH" />
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
         <activity android:name="com.amiibo.amiiboGames.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

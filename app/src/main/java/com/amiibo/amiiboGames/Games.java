@@ -1,19 +1,31 @@
 package com.amiibo.amiiboGames;
 
-public class Games {
+import java.io.Serializable;
+
+public class Games implements Serializable {
+
     private String id;
     private String name;
     private String character;
     private String gameSeries;
     private String type;
 
-    public Games(String id, String name, String tags, String category, String glass) {
+    //tai yra skirta darbui su json
+    public Games(String id, String name, String character, String gameSeries, String type) {
         this.id = id;
         this.name = name;
-        this.character = tags;
-        this.gameSeries = category;
-        this.type = glass;
+        this.character = character;
+        this.gameSeries = gameSeries;
+        this.type = type;
     }
+    //skirtas atvaizdavimui duomenu is anketos new_entry_activity
+    public Games(String id, String character, String gameSeries, String type) {
+        this.id = id;
+        this.character = character;
+        this.gameSeries = gameSeries;
+        this.type = type;
+    }
+
 
     public String getId() {
         return id;

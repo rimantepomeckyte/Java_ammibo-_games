@@ -36,7 +36,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        setTitle("Search");
         AsyncFetch asyncFetch = new AsyncFetch();
         asyncFetch.execute();
     }
@@ -107,19 +107,19 @@ public class SearchActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = JSON.readJsonFromUrl(GAMES_API);
 
-                    JSONArray jsonArray = null;
-                    gamesList = new ArrayList<Games>();
-                    try {
-                        jsonArray = JSON.getJSONArray(jsonObject);
-                        gamesList = JSON.getList(jsonArray);
-                    } catch (JSONException e) {
-                        Toast.makeText(
-                                SearchActivity.this,
-                                getResources().getText(R.string.search_error_reading_data) + e.getMessage(),
-                                Toast.LENGTH_LONG
-                        ).show();
-                    }
-                    return gamesList;
+                JSONArray jsonArray = null;
+                gamesList = new ArrayList<Games>();
+                try {
+                    jsonArray = JSON.getJSONArray(jsonObject);
+                    gamesList = JSON.getList(jsonArray);
+                } catch (JSONException e) {
+                    Toast.makeText(
+                            SearchActivity.this,
+                            getResources().getText(R.string.search_error_reading_data) + e.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
+                return gamesList;
             } catch (JSONException | IOException e1) {
                 Toast.makeText(
                         SearchActivity.this,
@@ -135,9 +135,9 @@ public class SearchActivity extends AppCompatActivity {
             //this method will be running on UI thread
             pdLoading.dismiss();
 
-           if(gamesList != null) {
-               Toast.makeText(SearchActivity.this, getResources().getString(R.string.search_found_entries_from_api) + gamesList.size(), Toast.LENGTH_SHORT).show();
-           }
+            if (gamesList != null) {
+                Toast.makeText(SearchActivity.this, getResources().getString(R.string.search_found_entries_from_api) + gamesList.size(), Toast.LENGTH_SHORT).show();
+            }
         }//onPostExecute
     }//AsyncFetch class
 }
