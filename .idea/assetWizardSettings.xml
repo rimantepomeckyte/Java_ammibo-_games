@@ -67,7 +67,8 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="C:\Users\User\Desktop\Java\ic_launcher_background.xml" />
+                                                <entry key="imagePath" value="C:\Users\User\Desktop\amiiboGames\app\src\main\res\drawable\ic_launcher_background.xml" />
+                                                <entry key="scalingPercent" value="98" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -90,7 +91,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\User\Desktop\Java\ic_launcher_foreground.xml" />
+                                                <entry key="imagePath" value="C:\Users\User\Desktop\amiiboGames\app\src\main\res\drawable\icon.png" />
+                                                <entry key="scalingPercent" value="53" />
                                               </map>
                                             </option>
                                           </PersistentState>
